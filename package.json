@@ -1,0 +1,14 @@
+{
+  "name": "woc_5.0",
+  "version": "1.0.0",
+  "description": "Job portal application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "KunalHS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
