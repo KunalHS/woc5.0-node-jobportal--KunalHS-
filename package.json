@@ -1,14 +1,26 @@
 {
-  "name": "woc_5.0",
+  "name": "jobby_1.0",
   "version": "1.0.0",
-  "description": "Job portal application",
-  "main": "index.js",
+  "description": "JOb portal designed for companies and job seekers to find their right fit",
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KunalHS/woc5.0-node-jobportal--KunalHS-.git"
   },
   "author": "KunalHS",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KunalHS/woc5.0-node-jobportal--KunalHS-/issues"
+  },
+  "homepage": "https://github.com/KunalHS/woc5.0-node-jobportal--KunalHS-#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "mongoose": "^6.8.3",
+    "nodemon": "^2.0.20"
   }
 }

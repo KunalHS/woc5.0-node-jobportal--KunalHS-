@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .header {
+    background-image: url("../images/home_image.jpg");
+    height: 600px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .logo_image {
+    height: 400px;
+    margin-top: -225px;
+    margin-left: -65px;
+  }
+  .logo_border {
+    position: absolute;
+    border: 3px solid black;
+    width: 100px;
+    height: 50px;
+    left: 24px;
+    top: 10px;
+  }
+  
+  .mainNav {
+    overflow: hidden;
+  }
+  
+  .mainNav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .mainNav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .home-footer {
+    display: flex;
+    justify-content: space-evenly;
+    padding:50px 0;
+    background-color:#fff;
+    color:#4b4c4d;
+  }
+  
+  .home-footer h3 {
+    margin-top:0;
+    margin-bottom:12px;
+    font-weight:bold;
+    font-size:16px;
+  }
+  
+  .home-footer ul {
+    text-align: left;
+    padding:0;
+    list-style:none;
+    line-height:1.6;
+    font-size:14px;
+    margin-bottom:0;
+  }
+  
+  .home-footer ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.8;
+  }
+  
+  .home-footer ul a:hover {
+    opacity:1;
+  }
