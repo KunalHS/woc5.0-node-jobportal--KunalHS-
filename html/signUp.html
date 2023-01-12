@@ -10,9 +10,16 @@
 </head>
 <body>
     <form id="signUpForm">
-        First Name : <input type="text" name="first_name" placeholder="First Name">
-        Last Name : <input type="text" name="last_name" placeholder="Last Name">
+        First Name : <input required type="text" name="first_name" placeholder="First Name"><br>
+        Last Name : <input required type="text" name="last_name" placeholder="Last Name"><br>
+        e-mail Address : <input required type="email" name="userEmail" placeholder="Email Address" id="signupEmail"><br>
+        CPI : <input required type="number" step="0.01" name="cpi" placeholder="CPI, scale of 10" id="cpi"><br>
+        Password : <input required type="password" name="password" placeholder="password" id="signupPassword"><br>
+        Confirm Password : <input required type="password" name="confirmpassword" placeholder="confirm password" id="signupConfirmPassword"><br>
         <button type="submit" id="signUpFormSubmit">Submit</button>
+        <div id="errMessage">
+
+        </div>
     </form>
 </body>
     <script src="../js/signUp.js"></script>

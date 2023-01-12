@@ -1,44 +1,50 @@
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = "mongodb+srv://KunalHS:<passwordforjobby>@jobby.8n2artr.mongodb.net/?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const passw = document.getElementById("signupPassword"),
+	cpassw = document.getElementById("signupConfirmPassword");
+function validatePassword() {
+	if (passw.value != cpassw.value) {
+		cpassw.setCustomValidity("Write same password");
+	} else {
+		cpassw.setCustomValidity("");
+	}
+}
+passw.onchange = validatePassword;
+cpassw.onkeyup = validatePassword;
 
-const express = require('express')
-const MongoClient = require('mongodb').MongoClient;
-const url =
-	"mongodb+srv://KunalHS:<passwordforjobby>@jobby.8n2artr.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(url);
-const dbName = "jobby"
-const userCollection = "users"
+const cpi = document.getElementById("cpi");
+function validateCPI() {
+	if (cpi.value < 0 || cpi.value > 10) {
+		cpi.setCustomValidity("CPI must be between 0 and 10");
+	} else {
+		cpi.setCustomValidity("");
+	}
+}
+cpi.onchange = validateCPI;
+cpi.onkeyup = validateCPI;
 
 const signUpForm = document.getElementById("signUpForm");
-
 signUpForm.addEventListener("submit", getSignUpInfo);
-
-async function getSignUpInfo(event) {
-	console.log("called Function");
+function getSignUpInfo(event) {
 	event.preventDefault();
 	data = new FormData(event.target);
 	dataObj = Object.fromEntries(data.entries());
+	console.log("New User request Sent");
 	console.log(dataObj);
-    await createNewUser(dataObj);
-
-	// client.connect(err => {
-	//     console.log(err)
-	//     const collection = client.db("jobby").collection("users");
-	//     collection.insertOne(dataObj);
-	//     console.log("Inside db console");
-	//     console.log(collection.find());
-	//     client.close();
-	//   });
+	handleUserSignup(dataObj);
 }
 
-async function createNewUser(userData) {
-	await client.connect();
-	console.log("Connected successfully to server");
-	const db = client.db(dbName);
-	const collection = db.collection(userCollection);
-
-	// the following code examples can be pasted here...
-
-	return "done.";
+async function handleUserSignup(userData) {
+	const response = await fetch("http://localhost:3000/signUp", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(userData),
+	});
+	if (response.status == "400") {
+		document.getElementById("errMessage").innerHTML = response.statusText;
+	}
 }
+function resetErr() {
+	document.getElementById("errMessage").innerHTML = "";
+}
+document.getElementById("signupEmail").onchange = resetErr;
