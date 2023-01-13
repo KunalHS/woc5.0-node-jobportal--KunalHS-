@@ -1,0 +1,1 @@
+Jobby, is a job portal where you can find your fit. Weather you are a company looking for the right candidates or a person looking to use their skills to earn some pinks, Jobby is the one app for you.
