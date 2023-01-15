@@ -23,7 +23,7 @@ mongoose.connect(
 	}
 );
 
-const signUpSchema = {
+const userSchema = {
 	_id: String,
 	first_name: String,
 	last_name: String,
@@ -31,24 +31,24 @@ const signUpSchema = {
 	password: String,
 };
 
-const signUpUser = mongoose.model("users", signUpSchema);
+const user = mongoose.model("users", userSchema);
 
 app.post("/signUp", function (req, res) {
-	signUpUser.exists({ _id: req.body.userEmail }, function (err, doc) {
+	user.exists({ _id: req.body.userEmail }, function (err, doc) {
 		if (doc) {
 			console.log("User already exisits");
 			res.statusMessage =
 				'This e-mail address is already in use, <a href="./login.html">login</a>';
 			res.send(400);
 		} else {
-			userData = new signUpUser({
+			userInstance = new user({
 				_id: req.body.userEmail,
 				first_name: req.body.first_name,
 				last_name: req.body.last_name,
 				cpi: req.body.cpi,
 				password: req.body.password,
 			});
-			userData.save();
+			userInstance.save();
 			console.log("New User added");
 			res.statusMessage =
 				'You are registered, head to the <a href="./login.html">login</a> page';
@@ -57,6 +57,21 @@ app.post("/signUp", function (req, res) {
 	});
 });
 
-//app.post
+app.post("/login", function (req, res) {
+	user.exists(
+		{ _id: req.body.userEmail, password: req.body.password },
+		function (err, doc) {
+			if (doc) {
+				console.log("Login Succeful");
+				res.statusMessage = "Redirecting....";
+				res.send(200);
+			} else {
+				console.log("Login Failed");
+				res.statusMessage = "Wrong username or password, retry";
+				res.send(200);
+			}
+		}
+	);
+});
 
 app.listen(3000, function () {});

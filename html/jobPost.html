@@ -4,41 +4,34 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sign Up</title>
-		<link rel="stylesheet" href="../css/signUp.css" />
+		<title>New Job Post</title>
+		<link rel="stylesheet" href="../css/jobPost.css" />
 	</head>
 	<body>
-		<form id="signUpForm">
-			First Name :
+		<form id="jobPostForm">
+			Post :
 			<input
 				required
 				type="text"
-				name="first_name"
-				placeholder="First Name"
-			/><br />
-			Last Name :
+				name="post_name"
+				placeholder="Company Name / Post Name"
+			/>
+			CPI criterion:
 			<input
 				required
-				type="text"
-				name="last_name"
-				placeholder="Last Name"
+				type="number"
+				step="0.5"
+				name="cpiCriterion"
+				placeholder="CPI criterion, scale of 10"
+				id="cpiCriterion"
 			/><br />
 			e-mail Address :
 			<input
 				required
 				type="email"
-				name="userEmail"
+				name="companyEmail"
 				placeholder="Email Address"
-				id="signupEmail"
-			/><br />
-			CPI :
-			<input
-				required
-				type="number"
-				step="0.01"
-				name="cpi"
-				placeholder="CPI, scale of 10"
-				id="cpi"
+				id="companyEmail"
 			/><br />
 			Password :
 			<input
@@ -56,10 +49,9 @@
 				placeholder="confirm password"
 				id="signupConfirmPassword"
 			/><br />
-			<button type="submit" id="signUpFormSubmit">Submit</button>
+			<button type="submit" id="companyFormSubmit">Submit</button>
 			<div id="errMessage"></div>
 		</form>
-		<p id="aau">Already a user, <a href="./login.html">login</a></p>
 	</body>
-	<script src="../js/signUp.js"></script>
+	<script src="../js/jobPost.js"></script>
 </html>
