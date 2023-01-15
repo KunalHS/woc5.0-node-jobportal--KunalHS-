@@ -40,9 +40,8 @@ async function handleUserSignup(userData) {
 		},
 		body: JSON.stringify(userData),
 	});
-	if (response.status == "400") {
-		document.getElementById("errMessage").innerHTML = response.statusText;
-	}
+	document.getElementById("errMessage").innerHTML = response.statusText;
+	document.getElementById("aau").innerHTML = "";
 }
 function resetErr() {
 	document.getElementById("errMessage").innerHTML = "";
