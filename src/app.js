@@ -83,7 +83,7 @@ const job = mongoose.model("jobs", jobSchema);
 
 app.post("/CompanySignup", function (req, res) {
 	job.exists(
-		{ _id: req.body.companyEmail, post_name: req.body.post_name },
+		{ _id: req.body.companyEmail, post_name: req.body.post_name, cpi: req.body.cpiCriterion },
 		function (err, doc) {
 			if (doc) {
 				console.log("Job Already Posted");
