@@ -30,7 +30,6 @@ const userSchema = {
 	cpi: Number,
 	password: String,
 };
-
 const user = mongoose.model("users", userSchema);
 
 app.post("/signUp", function (req, res) {
@@ -68,6 +67,38 @@ app.post("/login", function (req, res) {
 			} else {
 				console.log("Login Failed");
 				res.statusMessage = "Wrong username or password, retry";
+				res.send(200);
+			}
+		}
+	);
+});
+
+const jobSchema = {
+	_id: String,
+	post_name: String,
+	cpi: Number,
+	password: String,
+};
+const job = mongoose.model("jobs", jobSchema);
+
+app.post("/CompanySignup", function (req, res) {
+	job.exists(
+		{ _id: req.body.companyEmail, post_name: req.body.post_name },
+		function (err, doc) {
+			if (doc) {
+				console.log("Job Already Posted");
+				res.statusMessage = "Job Already Posted, Redirecting....";
+				res.send(200);
+			} else {
+				jobInstance = new job({
+					_id: req.body.companyEmail,
+					post_name: req.body.post_name,
+					cpi: req.body.cpiCriterion,
+					password: req.body.password,
+				});
+				jobInstance.save();
+				console.log("New Post added");
+				res.statusMessage = "Job is Posted, Redirecting...";
 				res.send(200);
 			}
 		}
