@@ -21,7 +21,7 @@ mongoose.connect(
 			console.log("mongdb is connected");
 		}
 	}
-);
+	);
 
 const userSchema = {
 	_id: String,
